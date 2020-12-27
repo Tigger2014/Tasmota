@@ -356,9 +356,11 @@ void TelegramLoop(void) {
             Telegram.skip = false;
           } else {
             if (Telegram.message_count && (Telegram.message[Telegram.index].text.length() > 0)) {
-              String logging = TelegramExecuteCommand(Telegram.message[Telegram.index].text.c_str());
-              if (logging.length() > 0) {
-                TelegramSendMessage(Telegram.message[Telegram.index].chat_id, logging);
+              if(String(Telegram.message[Telegram.index].chat_id) == String(SettingsText(SET_TELEGRAM_CHATID))) {
+                String logging = TelegramExecuteCommand(Telegram.message[Telegram.index].text.c_str());
+                if (logging.length() > 0) {
+                  TelegramSendMessage(Telegram.message[Telegram.index].chat_id, logging);
+                }
               }
             }
           }
