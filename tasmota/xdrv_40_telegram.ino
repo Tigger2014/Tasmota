@@ -93,7 +93,7 @@ bool TelegramInit(void) {
 #ifdef USE_MQTT_TLS_CA_CERT
       telegramClient->setTrustAnchor(&GoDaddyCAG2_TA, 1);
 #else
-      telegramClient->setPubKeyFingerprint(Telegram_Fingerprint, Telegram_Fingerprint, false); // check server fingerprint
+      telegramClient->setPubKeyFingerprint(Telegram_Fingerprint, Telegram_Fingerprint, true); // check server fingerprint, allow any
 #endif
       Telegram.message_count = 0;     // Number of received messages
       Telegram.next_update_id = 0;    // Code of last read Message
